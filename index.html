@@ -1,62 +1,1762 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" type="love-icon" href="/love.png" />
-    <title>Valentine</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Panduan Portal SDI & e-Walidata untuk Admin OPD: informasi, tutorial, dan sumber daya pengelolaan data."
+    />
+
+    <title>Panduan Portal SDI & e-Walidata</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+
+    <style>
+      :root {
+        --primary: #ff2342;
+        --secondary: #ffb830;
+        --bg: #f6f6f6;
+        --orange-gradient: linear-gradient(135deg, #a60d10, #ec1d25);
+        --red-gradient: linear-gradient(135deg, #014c86, #00a5cb);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        outline: none;
+        border: none;
+        text-decoration: none;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: var(--bg);
+        color: #333;
+        padding-top: 80px;
+      }
+
+      /* Navbar Styles */
+      .navbar {
+        background: rgba(255, 255, 255, 0.95) !important;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        padding: 15px 0;
+        transition: all 0.3s ease;
+      }
+
+      .navbar-brand {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary) !important;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .navbar-brand img {
+        width: 40px;
+        height: 40px;
+      }
+
+      .navbar-nav {
+        margin: 0 auto;
+      }
+
+      .nav-link {
+        color: #333 !important;
+        font-weight: 500;
+        padding: 10px 20px !important;
+        margin: 0 5px;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        letter-spacing: 0.5px;
+      }
+
+      .nav-link:hover {
+        background: linear-gradient(135deg, var(--primary), #ff4757);
+        color: white !important;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(255, 35, 66, 0.3);
+      }
+
+      .nav-link.active {
+        background: linear-gradient(135deg, var(--primary), #ff4757);
+        color: white !important;
+      }
+
+      /* Mobile navbar */
+      .navbar-toggler {
+        border: none;
+        padding: 8px 12px;
+        background: var(--primary);
+        border-radius: 8px;
+      }
+
+      .navbar-toggler:focus {
+        box-shadow: none;
+      }
+
+      .navbar-toggler-icon {
+        filter: invert(1);
+      }
+
+      .offcanvas-header {
+        background: linear-gradient(135deg, var(--primary), #ff4757);
+        color: white;
+      }
+
+      .offcanvas-title {
+        font-weight: 700;
+        color: white;
+      }
+
+      .btn-close {
+        filter: invert(1);
+      }
+
+      .offcanvas-body {
+        background: #f8f9fa;
+      }
+
+      .offcanvas .nav-link {
+        color: #333 !important;
+        border-radius: 10px;
+        margin: 5px 0;
+        padding: 15px 20px !important;
+      }
+
+      .mynavbar {
+        background-color: rgba(255, 255, 255, 0.3) !important;
+        backdrop-filter: blur(4px);
+      }
+
+      .mynavbar .offcanvas {
+        height: 100vh;
+        width: 100vw;
+      }
+
+      .mynavbar .navbar-brand,
+      .mynavbar .offcanvas-title {
+        font-size: 2rem;
+        font-weight: bold;
+      }
+
+      .mynavbar .nav-link {
+        text-transform: uppercase;
+      }
+
+      #hero {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+      }
+
+      .about {
+        background-color: #fff;
+      }
+
+      .my-card {
+        background-color: #f6f6f6;
+      }
+
+      /* Dataset Section Styles */
+      .dataset-section {
+        background-color: #fff;
+        padding: 60px 0;
+      }
+
+      .dataset-header {
+        background: var(--orange-gradient);
+        color: white;
+        padding: 20px;
+        border-radius: 15px 15px 0 0;
+        margin-bottom: 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .dataset-header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 150px;
+        height: 100%;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.2)"/><circle cx="40" cy="40" r="1.5" fill="rgba(255,255,255,0.15)"/><circle cx="60" cy="30" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="50" r="2.5" fill="rgba(255,255,255,0.2)"/></svg>');
+        opacity: 0.3;
+      }
+
+      .dataset-header-red {
+        background: var(--red-gradient);
+      }
+
+      .dataset-header h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .dataset-header i {
+        font-size: 2rem;
+        opacity: 0.9;
+      }
+
+      .dataset-body {
+        background: white;
+        border: 1px solid #e0e0e0;
+        border-top: none;
+        border-radius: 0 0 15px 15px;
+        padding: 0;
+        max-height: 600px;
+        overflow-y: auto;
+      }
+
+      .dataset-item {
+        padding: 20px;
+        border-bottom: 1px solid #f0f0f0;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .dataset-item:hover {
+        background-color: #f8f9ff;
+        transform: translateX(5px);
+      }
+
+      .dataset-item:last-child {
+        border-bottom: none;
+      }
+
+      .dataset-title {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #2c3e50;
+        margin-bottom: 8px;
+        line-height: 1.4;
+      }
+
+      .dataset-description {
+        font-size: 0.9rem;
+        color: #7f8c8d;
+        margin-bottom: 15px;
+        line-height: 1.5;
+      }
+
+      .dataset-meta {
+        display: flex;
+        justify-content: between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .dataset-badge {
+        font-size: 0.75rem;
+        font-weight: 600;
+        padding: 4px 10px;
+        border-radius: 20px;
+        text-transform: uppercase;
+      }
+
+      .badge-xlsx {
+        background-color: #e8f5e8;
+        color: #2e7d32;
+        border: 1px solid #c8e6c9;
+      }
+
+      .badge-pdf {
+        background-color: #fff3e0;
+        color: #f57c00;
+        border: 1px solid #ffcc02;
+      }
+
+      .badge-csv {
+        background-color: #e3f2fd;
+        color: #1976d2;
+        border: 1px solid #bbdefb;
+      }
+
+      .badge-xls {
+        background-color: #f3e5f5;
+        color: #7b1fa2;
+        border: 1px solid #e1bee7;
+      }
+
+      .dataset-location {
+        font-size: 0.85rem;
+        color: #3498db;
+        font-weight: 500;
+      }
+
+      .dataset-action {
+        background: linear-gradient(135deg, #4caf50, #45a049);
+        color: white;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+      }
+
+      .dataset-action:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+        color: white;
+      }
+
+      /* Scrollbar styling */
+      .dataset-body::-webkit-scrollbar {
+        width: 6px;
+      }
+
+      .dataset-body::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 10px;
+      }
+
+      .dataset-body::-webkit-scrollbar-thumb {
+        background: #c1c1c1;
+        border-radius: 10px;
+      }
+
+      .dataset-body::-webkit-scrollbar-thumb:hover {
+        background: #a8a8a8;
+      }
+
+      /* FAQ Section Styles - FIXED */
+      .faq-section {
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        padding: 80px 0;
+        position: relative;
+      }
+
+      .faq-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="10" cy="10" r="1" fill="rgba(255,35,66,0.1)"/><circle cx="30" cy="80" r="1.5" fill="rgba(255,184,48,0.1)"/><circle cx="70" cy="30" r="1" fill="rgba(255,35,66,0.08)"/><circle cx="90" cy="70" r="2" fill="rgba(255,184,48,0.12)"/></svg>');
+        pointer-events: none;
+      }
+
+      .faq-accordion {
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        border-radius: 20px;
+        overflow: hidden;
+        background: white;
+      }
+
+      .faq-accordion .accordion-item {
+        border: none;
+        border-bottom: 1px solid #f0f0f0;
+        background: white;
+      }
+
+      .faq-accordion .accordion-item:last-child {
+        border-bottom: none;
+      }
+
+      /* Fix for accordion button */
+      .faq-accordion .accordion-button {
+        background: white;
+        border: none;
+        padding: 25px 30px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #2c3e50;
+        box-shadow: none;
+        position: relative;
+        transition: all 0.3s ease;
+        outline: none !important;
+        border-radius: 0 !important;
+      }
+
+      .faq-accordion .accordion-button:not(.collapsed) {
+        background: linear-gradient(135deg, var(--primary), #ff4757);
+        color: white;
+        box-shadow: 0 4px 15px rgba(255, 35, 66, 0.2);
+      }
+
+      .faq-accordion .accordion-button:not(.collapsed) i {
+        color: white;
+      }
+
+      .faq-accordion .accordion-button:hover {
+        background: linear-gradient(135deg, #f1f3f4, #e8eaed);
+        transform: translateY(-2px);
+      }
+
+      .faq-accordion .accordion-button:not(.collapsed):hover {
+        background: linear-gradient(135deg, #ff4757, var(--primary));
+      }
+
+      .faq-accordion .accordion-button i {
+        color: var(--primary);
+        font-size: 1.2rem;
+        transition: all 0.3s ease;
+      }
+
+      /* Fix for accordion arrow */
+      .faq-accordion .accordion-button::after {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+        transition: transform 0.3s ease;
+        font-size: 1.2rem;
+      }
+
+      .faq-accordion .accordion-button:not(.collapsed)::after {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+        transform: rotate(180deg);
+      }
+
+      /* Fix for accordion body */
+      .faq-accordion .accordion-body {
+        padding: 25px 30px;
+        font-size: 1rem;
+        line-height: 1.7;
+        color: #495057;
+        background: #fafbfc;
+        border-top: 3px solid var(--primary);
+      }
+
+      /* Support Card Styles */
+      .support-card {
+        background: white;
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        margin-top: 30px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .support-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+      }
+
+      .support-icon {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, var(--primary), #ff4757);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 20px;
+        box-shadow: 0 8px 25px rgba(255, 35, 66, 0.3);
+      }
+
+      .support-icon i {
+        font-size: 2rem;
+        color: white;
+      }
+
+      .btn-support {
+        background: linear-gradient(135deg, #6c757d, #495057);
+        color: white;
+        padding: 12px 24px;
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        border: none;
+        display: inline-flex;
+        align-items: center;
+        font-size: 0.95rem;
+      }
+
+      .btn-support:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(108, 117, 125, 0.3);
+        color: white;
+      }
+
+      .btn-support-wa {
+        background: linear-gradient(135deg, #25d366, #128c7e);
+      }
+
+      .btn-support-wa:hover {
+        box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+      }
+
+      .btn-support-phone {
+        background: linear-gradient(135deg, var(--primary), #ff4757);
+      }
+
+      .btn-support-phone:hover {
+        box-shadow: 0 8px 25px rgba(255, 35, 66, 0.3);
+      }
+
+      /* Footer Styles */
+      .footer {
+        background: linear-gradient(135deg, #1a1a1a 0%, #2d3436 100%);
+        color: white;
+        padding: 60px 0 20px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .footer::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="1" fill="rgba(255,35,66,0.1)"/><circle cx="80" cy="80" r="1.5" fill="rgba(255,184,48,0.1)"/><circle cx="40" cy="60" r="1" fill="rgba(255,35,66,0.08)"/><circle cx="70" cy="30" r="1.2" fill="rgba(255,184,48,0.12)"/></svg>');
+        pointer-events: none;
+      }
+
+      .footer-brand {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 20px;
+      }
+
+      .footer-brand img {
+        width: 60px;
+        height: 60px;
+        filter: brightness(1.2);
+      }
+
+      .footer-brand h4 {
+        font-weight: 700;
+        color: var(--primary);
+        margin: 0;
+        line-height: 1.2;
+      }
+
+      .footer-description {
+        color: #b2bec3;
+        line-height: 1.6;
+        margin-bottom: 25px;
+      }
+
+      .footer-section h5 {
+        color: white;
+        font-weight: 600;
+        margin-bottom: 20px;
+        position: relative;
+        padding-bottom: 10px;
+      }
+
+      .footer-section h5::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 40px;
+        height: 2px;
+        background: var(--primary);
+        border-radius: 2px;
+      }
+
+      .footer-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .footer-links li {
+        margin-bottom: 10px;
+      }
+
+      .footer-links a {
+        color: #b2bec3;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .footer-links a:hover {
+        color: var(--primary);
+        transform: translateX(5px);
+      }
+
+      .footer-links i {
+        width: 16px;
+        text-align: center;
+      }
+
+      .contact-info {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .contact-info li {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        margin-bottom: 15px;
+        color: #b2bec3;
+      }
+
+      .contact-info i {
+        color: var(--primary);
+        width: 20px;
+        text-align: center;
+        margin-top: 2px;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+      }
+
+      .social-links a {
+        width: 45px;
+        height: 45px;
+        background: linear-gradient(135deg, var(--primary), #ff4757);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(255, 35, 66, 0.3);
+      }
+
+      .social-links a:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(255, 35, 66, 0.4);
+        color: white;
+      }
+
+      .social-links a.facebook {
+        background: linear-gradient(135deg, #3b5998, #2d4373);
+      }
+
+      .social-links a.instagram {
+        background: linear-gradient(135deg, #e1306c, #fd1d1d, #fcb045);
+      }
+
+      .social-links a.youtube {
+        background: linear-gradient(135deg, #ff0000, #cc0000);
+      }
+
+      .social-links a.twitter {
+        background: linear-gradient(135deg, #1da1f2, #0d8bd9);
+      }
+
+      .footer-bottom {
+        border-top: 1px solid #444;
+        margin-top: 40px;
+        padding-top: 25px;
+        text-align: center;
+        color: #636e72;
+      }
+
+      .footer-bottom p {
+        margin: 0;
+        font-size: 0.9rem;
+      }
+
+      .footer-bottom .heart {
+        color: var(--primary);
+        animation: heartbeat 1.5s ease-in-out infinite;
+      }
+
+      @keyframes heartbeat {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      /* Responsive Footer */
+      @media (max-width: 768px) {
+        .footer {
+          padding: 40px 0 15px;
+        }
+
+        .footer-brand {
+          justify-content: center;
+          text-align: center;
+        }
+
+        .footer-brand h4 {
+          font-size: 1.1rem;
+        }
+
+        .footer-section {
+          text-align: center;
+          margin-bottom: 30px;
+        }
+
+        .footer-section h5::after {
+          left: 50%;
+          transform: translateX(-50%);
+        }
+
+        .contact-info li {
+          justify-content: center;
+        }
+
+        .social-links {
+          justify-content: center;
+        }
+      }
+
+      /* General Responsive */
+      @media (max-width: 768px) {
+        body {
+          padding-top: 70px;
+        }
+
+        .navbar {
+          padding: 10px 0;
+        }
+
+        .navbar-brand {
+          font-size: 1.3rem;
+        }
+
+        .navbar-brand img {
+          width: 35px;
+          height: 35px;
+        }
+
+        .dataset-meta {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .dataset-header h3 {
+          font-size: 1.2rem;
+        }
+
+        .dataset-header i {
+          font-size: 1.5rem;
+        }
+
+        .dataset-item {
+          padding: 15px;
+        }
+
+        .faq-accordion .accordion-button {
+          padding: 20px 20px;
+          font-size: 1rem;
+        }
+
+        .faq-accordion .accordion-body {
+          padding: 20px;
+        }
+
+        .support-card {
+          padding: 30px 20px;
+        }
+
+        .btn-support {
+          width: 100%;
+          justify-content: center;
+          margin-bottom: 10px;
+        }
+      }
+
+      /* Extra Large */
+      @media (max-width: 1200px) {
+        .home .heart {
+          transform: translateX(-50%) translateY(45px);
+        }
+      }
+
+      /* Laptop */
+      @media (max-width: 992px) {
+        html {
+          font-size: 75%;
+        }
+      }
+
+      /* Tablet */
+      @media (max-width: 768px) {
+        html {
+          font-size: 65%;
+        }
+      }
+
+      /* Mobile Phone */
+      @media (max-width: 576px) {
+        html {
+          font-size: 60%;
+        }
+      }
+    </style>
   </head>
   <body>
-    <div class="blur-background">
-      <div class="passcode-container">
-        <p class="text-white fs-5">Enter Passcode</p>
-        <div class="passcode-dots">
-          <div class="dot"></div>
-          <div class="dot"></div>
-          <div class="dot"></div>
-          <div class="dot"></div>
-        </div>
-        <div class="passcode-keypad">
-          <button class="key">
-            <span class="number">1</span><span class="letters"></span>
-          </button>
-          <button class="key">
-            <span class="number">2</span><span class="letters">ABC</span>
-          </button>
-          <button class="key">
-            <span class="number">3</span><span class="letters">DEF</span>
-          </button>
-          <button class="key">
-            <span class="number">4</span><span class="letters">GHI</span>
-          </button>
-          <button class="key">
-            <span class="number">5</span><span class="letters">JKL</span>
-          </button>
-          <button class="key">
-            <span class="number">6</span><span class="letters">MNO</span>
-          </button>
-          <button class="key">
-            <span class="number">7</span><span class="letters">PQRS</span>
-          </button>
-          <button class="key">
-            <span class="number">8</span><span class="letters">TUV</span>
-          </button>
-          <button class="key">
-            <span class="number">9</span><span class="letters">WXYZ</span>
-          </button>
-          <div class="spacer"></div>
-          <button class="key">
-            <span class="number">0</span><span class="letters"></span>
-          </button>
-          <div class="spacer"></div>
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+      <div class="container-xl">
+        <!-- Brand/Logo -->
+        <a class="navbar-brand" href="#hero">
+          <img src="logo-sgu.png" alt="SDI Logo" />
+        </a>
+
+        <!-- Toggle button for mobile -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasNavbar"
+          aria-controls="offcanvasNavbar"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar menu for desktop -->
+        <div class="collapse navbar-collapse">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="#hero">Beranda</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">Tentang Kami</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#panduan">Panduan Teknis</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#faq">FAQ</a>
+            </li>
+          </ul>
         </div>
       </div>
-    </div>
-    <script src="script.js"></script>
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- Hero Section Start -->
+    <section id="hero" class="container-fluid mx-auto pb-4 pt-14 ps-5">
+      <div class="row align-items-center">
+        <!-- Kolom kiri (teks) -->
+        <div
+          class="col-lg-6 d-flex flex-column justify-content-center space-y-4 p-5 text-center text-lg-start"
+        >
+          <h1
+            class="fw-bold text-6xl lg:text-7xl tracking-tighter"
+            style="font-weight: 800"
+          >
+            Panduan Portal <span style="color: var(--primary)">SDI</span> &
+            <br />
+            <span style="color: var(--primary)">E-Walidata</span> untuk
+            <span style="color: var(--secondary)">Admin OPD</span>
+          </h1>
+
+          <div>
+            <p class="text-xl text-muted-foreground fw-bold">
+              Panduan Lengkap, Video Tutorial, dan Sumber Daya untuk pengelolaan
+              data yang akurat dan terintegrasi
+            </p>
+          </div>
+        </div>
+
+        <!-- Kolom kanan (gambar) -->
+        <div class="col-lg-6 text-center">
+          <img
+            alt="Triangle Hero"
+            class="img-fluid"
+            width="700"
+            height="700"
+            src="figure.svg"
+            style="color: transparent"
+          />
+        </div>
+      </div>
+    </section>
+    <!-- Hero Section End -->
+
+    <!-- About Section Start -->
+    <section id="about" class="about py-3 pb-md-5 pt-md-2">
+      <div class="container-xl mx-auto px-4">
+        <h1 class="fw-bold m-5 text-center">
+          Tentang <span style="color: var(--primary)">Kami</span>
+        </h1>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+          <div class="col">
+            <div class="px-3 py-4 rounded-2 my-card">
+              <div
+                class="d-flex justify-content-center align-items-center py-4 rounded-3 mb-3"
+                style="height: 100px"
+              >
+                <img
+                  alt="Logo SDI"
+                  class="img-fluid"
+                  width="80"
+                  height="80"
+                  src="logo_no_bg.png"
+                  style="color: transparent"
+                />
+              </div>
+              <p class="fw-normal text-muted fs-6 mb-4 text-center">
+                <span style="font-weight: bold">Satu Data Indonesia</span>
+                adalah kebijakan tata kelola data pemerintah untuk menghasilkan
+                data yang akurat, mutakhir, terpadu, dan dapat
+                dipertanggungjawabkan, serta mudah diakses dan dibagipakaikan
+                antar Instansi Pusat dan Instansi Daerah melalui pemenuhan
+                Standar Data, Metadata, Interoperabilitas Data, dan menggunakan
+                Kode Referensi dan Data Induk
+              </p>
+            </div>
+          </div>
+          <div class="col">
+            <div class="px-3 py-4 rounded-2 my-card">
+              <div
+                class="d-flex justify-content-center align-items-center py-4 rounded-3 mb-3"
+                style="height: 100px"
+              >
+                <img
+                  alt="Logo SIPD"
+                  class="img-fluid"
+                  width="80"
+                  height="80"
+                  src="logo-sipd.png"
+                  style="color: transparent"
+                />
+              </div>
+              <p class="fw-normal text-muted fs-6 mb-4 text-center">
+                <span style="font-weight: bold"
+                  >SIPD (Sistem Informasi Pemerintah Daerah)</span
+                >
+                adalah sebuah sistem terintegrasi modern yang digunakan oleh
+                pemerintah daerah untuk mengelola berbagai informasi penting
+                terkait pembangunan, keuangan, dan pemerintahan. SIPD berfungsi
+                sebagai platform digital terpadu yang memfasilitasi perencanaan,
+                pelaksanaan, dan evaluasi kinerja pemerintah daerah.
+              </p>
+            </div>
+          </div>
+          <div class="col">
+            <div class="px-3 py-4 rounded-2 my-card">
+              <div
+                class="d-flex justify-content-center align-items-center py-4 rounded-3 mb-3"
+                style="height: 100px"
+              >
+                <img
+                  alt="Logo E-Walidata"
+                  class="img-fluid"
+                  width="200"
+                  height="200"
+                  src="logo-e-walidata.png"
+                  style="color: transparent"
+                />
+              </div>
+              <p class="fw-normal text-muted fs-6 mb-4 text-center">
+                <span style="font-weight: bold">E-Walidata</span>
+                adalah sistem elektronik yang digunakan dalam Sistem Informasi
+                Pemerintahan Daerah (SIPD) untuk mengelola, memvalidasi, dan
+                memverifikasi data yang digunakan untuk perencanaan pembangunan
+                daerah. Bertujuan untuk memastikan data yang digunakan akurat,
+                terpercaya, dan dapat dipertanggungjawabkan, sehingga
+                pembangunan daerah berkualitas.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- About Section End -->
+
+    <!-- Dataset Section Start -->
+    <section id="panduan" class="dataset-section">
+      <h1 class="fw-bold m-5 text-center">
+        Panduan <span style="color: var(--primary)">Teknis</span>
+      </h1>
+      <div class="container-xl mx-auto px-4">
+        <div class="row g-4">
+          <!-- Dataset Populer Column -->
+          <div class="col-lg-6">
+            <div class="dataset-card">
+              <div class="dataset-header">
+                <h3>
+                  <i class="fas fa-chart-line"></i>
+                  Satu Data Indonesia (SDI)
+                </h3>
+              </div>
+              <div class="dataset-body">
+                <div class="dataset-item">
+                  <div class="dataset-title">Login dan Navigasi</div>
+                  <div class="dataset-description">
+                    Masuk ke portal SDI menggunakan akun yang telah disediakan
+                    kemudian pilih menu sesuai kebutuhan
+                  </div>
+                  <div class="dataset-meta">
+                    <div class="d-flex gap-2 align-items-center">
+                      <!-- <span class="dataset-badge badge-xlsx">XLSX</span> -->
+                      <a
+                        href="https://data.sanggau.go.id/user/login"
+                        target="_blank"
+                        class="dataset-location text-decoration-none"
+                      >
+                        Link Website
+                      </a>
+                    </div>
+                    <button class="dataset-action">Tonton Video</button>
+                  </div>
+                </div>
+
+                <div class="dataset-item">
+                  <div class="dataset-title">Tambah Data</div>
+                  <div class="dataset-description">
+                    Pilih menu
+                    <span style="font-weight: bold">DATA</span>
+                    dibagian navigasi web yang terletak diatas. <br />
+                    Pilih menu
+                    <span style="font-weight: bold">Tambah Dataset</span>
+                    kemudian lengkapi semua kolom pada form sesuai dengan data
+                    yang akan diunggah kemudian klik
+                    <span style="font-weight: bold">Simpan</span> untuk
+                    menyimpan data
+                  </div>
+                  <div class="dataset-meta">
+                    <!-- <div class="d-flex gap-2 align-items-center">
+                      <span class="dataset-badge badge-pdf">PDF</span>
+                      <span class="dataset-location">Kota Malang</span>
+                    </div> -->
+                    <button class="dataset-action">Tonton Video</button>
+                  </div>
+                </div>
+
+                <div class="dataset-item">
+                  <div class="dataset-title">Perbarui Data</div>
+                  <div class="dataset-description">
+                    Pilih menu
+                    <span style="font-weight: bold">INSTANSI</span>
+                    dibagian navigasi web yang terletak diatas. <br />
+                    Pilih OPD kamu, kemudian pilih data yang akan diperbarui.
+                    <br />
+                    Klik menu <span style="font-weight: bold">Manage</span> dan
+                    ubah data sesuai kebutuhan kemudian klik
+                    <span style="font-weight: bold">Perbarui Data</span> untuk
+                    menyimpan perubahan
+                  </div>
+                  <div class="dataset-meta">
+                    <!-- <div class="d-flex gap-2 align-items-center">
+                      <span class="dataset-badge badge-pdf">PDF</span>
+                      <span class="dataset-location">Kota Malang</span>
+                    </div> -->
+                    <button class="dataset-action">Tonton Video</button>
+                  </div>
+                </div>
+
+                <div class="dataset-item">
+                  <div class="dataset-title">Hapus Data</div>
+                  <div class="dataset-description">
+                    Pilih menu
+                    <span style="font-weight: bold">INSTANSI</span>
+                    dibagian navigasi web yang terletak diatas. <br />
+                    Pilih OPD kamu, kemudian pilih data yang akan diperbarui.
+                    <br />
+                    Klik menu
+                    <span style="font-weight: bold">Manage</span> kemudian klik
+                    <span style="font-weight: bold">Hapus</span> dibagian bawah
+                    untuk menghapus data.
+                  </div>
+                  <div class="dataset-meta">
+                    <!-- <div class="d-flex gap-2 align-items-center">
+                      <span class="dataset-badge badge-pdf">PDF</span>
+                      <span class="dataset-location">Kota Malang</span>
+                    </div> -->
+                    <button class="dataset-action">Tonton Video</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dataset Terbaru Column -->
+          <div class="col-lg-6">
+            <div class="dataset-card">
+              <div class="dataset-header dataset-header-red">
+                <h3>
+                  <i class="fas fa-folder-open"></i>
+                  E-Walidata
+                </h3>
+              </div>
+              <div class="dataset-body">
+                <div class="dataset-item">
+                  <div class="dataset-title">Login dan Navigasi</div>
+                  <div class="dataset-description">
+                    Masuk ke portal E-Walidata menggunakan akun yang telah
+                    disediakan kemudian pilih tahun data. <br />
+                    Setelah login pilih menu sesuai kebuthan
+                  </div>
+                  <div class="dataset-meta">
+                    <div class="d-flex gap-2 align-items-center">
+                      <!-- <span class="dataset-badge badge-xlsx">XLSX</span> -->
+                      <a
+                        href="https://sipd.go.id/ewalidata"
+                        target="_blank"
+                        class="dataset-location text-decoration-none"
+                      >
+                        Link Website
+                      </a>
+                    </div>
+
+                    <a
+                      href="https://www.youtube.com/watch?v=BFTMkJlO8OM"
+                      target="_blank"
+                      class="dataset-action btn"
+                    >
+                      Tonton Video
+                    </a>
+                  </div>
+                </div>
+
+                <div class="dataset-item">
+                  <div class="dataset-title">Input & Perbarui Jumlah Data</div>
+                  <div class="dataset-description">
+                    Pilih menu
+                    <span style="font-weight: bold"
+                      >Pengumpulan Data > Data SSD</span
+                    >
+                    dibagian navigasi web yang terletak diatas. <br />
+                    Isi filter data sesuai kebutuhan kemudian klik
+                    <span style="font-weight: bold">Tampilkan</span>. <br />
+                    Isi jumlah data di kolom yang
+                    <span style="font-weight: bold">tidak berwarna hijau</span>.
+                    <br />
+                  </div>
+                  <div class="dataset-meta">
+                    <!-- <div class="d-flex gap-2 align-items-center">
+                      <span class="dataset-badge badge-pdf">PDF</span>
+                      <span class="dataset-location">Kota Malang</span>
+                    </div> -->
+                    <button class="dataset-action">Tonton Video</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Dataset Section End -->
+
+    <!-- FAQ Section Start -->
+    <section id="faq" class="faq-section">
+      <div class="container-xl mx-auto px-4">
+        <div class="text-center mb-5">
+          <h1 class="fw-bold mb-3">
+            Frequently Asked
+            <span style="color: var(--primary)">Questions</span>
+          </h1>
+          <p class="text-muted fs-5">
+            Temukan jawaban atas pertanyaan yang sering diajukan tentang Portal
+            SDI & e-Walidata
+          </p>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="col-lg-10">
+            <div class="accordion faq-accordion" id="faqAccordion">
+              <!-- FAQ Item 1 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#faq1"
+                    aria-expanded="false"
+                    aria-controls="faq1"
+                  >
+                    <i class="fas fa-question-circle me-3"></i>
+                    Apa itu Portal Satu Data Indonesia (SDI)?
+                  </button>
+                </h2>
+                <div
+                  id="faq1"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#faqAccordion"
+                >
+                  <div class="accordion-body">
+                    Portal Satu Data Indonesia adalah platform terpusat untuk
+                    mengelola data pemerintah yang akurat, mutakhir, terpadu,
+                    dan dapat dipertanggungjawabkan. Portal ini memfasilitasi
+                    sharing data antar Instansi Pusat dan Daerah dengan standar
+                    metadata dan interoperabilitas yang konsisten.
+                  </div>
+                </div>
+              </div>
+
+              <!-- FAQ Item 2 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#faq2"
+                    aria-expanded="false"
+                    aria-controls="faq2"
+                  >
+                    <i class="fas fa-database me-3"></i>
+                    Bagaimana cara mengunggah dataset ke Portal SDI?
+                  </button>
+                </h2>
+                <div
+                  id="faq2"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#faqAccordion"
+                >
+                  <div class="accordion-body">
+                    <strong>Langkah-langkah mengunggah dataset:</strong><br />
+                    1. Login ke portal SDI dengan akun OPD Anda<br />
+                    2. Pilih menu "Tambah Dataset"<br />
+                    3. Lengkapi form metadata (judul, deskripsi, kategori,
+                    dll)<br />
+                    4. Upload file dataset dalam format yang didukung (CSV,
+                    Excel, PDF)<br />
+                    5. Pastikan data sudah sesuai standar dan klik "Simpan"<br />
+                    6. Tunggu proses validasi dari administrator
+                  </div>
+                </div>
+              </div>
+
+              <!-- FAQ Item 3 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#faq3"
+                    aria-expanded="false"
+                    aria-controls="faq3"
+                  >
+                    <i class="fas fa-shield-alt me-3"></i>
+                    Apa fungsi utama sistem e-Walidata?
+                  </button>
+                </h2>
+                <div
+                  id="faq3"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#faqAccordion"
+                >
+                  <div class="accordion-body">
+                    E-Walidata berfungsi untuk memvalidasi dan memverifikasi
+                    data yang digunakan dalam perencanaan pembangunan daerah.
+                    Sistem ini memastikan bahwa data yang diinput sudah akurat,
+                    terpercaya, dan dapat dipertanggungjawabkan untuk mendukung
+                    perencanaan pembangunan yang berkualitas.
+                  </div>
+                </div>
+              </div>
+
+              <!-- FAQ Item 4 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#faq4"
+                    aria-expanded="false"
+                    aria-controls="faq4"
+                  >
+                    <i class="fas fa-file-alt me-3"></i>
+                    Format file apa saja yang didukung untuk upload dataset?
+                  </button>
+                </h2>
+                <div
+                  id="faq4"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#faqAccordion"
+                >
+                  <div class="accordion-body">
+                    Portal SDI mendukung berbagai format file untuk upload
+                    dataset:<br />
+                    • <strong>Excel:</strong> .xlsx, .xls<br />
+                    • <strong>CSV:</strong> .csv (Comma Separated Values)<br />
+                    • <strong>PDF:</strong> .pdf untuk dokumen laporan<br />
+                    • <strong>JSON:</strong> .json untuk data terstruktur<br />
+                    Pastikan ukuran file tidak melebihi 50MB dan data sudah
+                    dalam format yang benar.
+                  </div>
+                </div>
+              </div>
+
+              <!-- FAQ Item 5 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#faq5"
+                    aria-expanded="false"
+                    aria-controls="faq5"
+                  >
+                    <i class="fas fa-users me-3"></i>
+                    Siapa saja yang dapat mengakses Portal SDI?
+                  </button>
+                </h2>
+                <div
+                  id="faq5"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#faqAccordion"
+                >
+                  <div class="accordion-body">
+                    Portal SDI dapat diakses oleh:<br />
+                    • <strong>Admin OPD:</strong> Untuk mengelola dataset
+                    instansi masing-masing<br />
+                    • <strong>Super Admin:</strong> Untuk validasi dan moderasi
+                    data<br />
+                    • <strong>Publik umum:</strong> Untuk mengakses dataset yang
+                    bersifat terbuka<br />
+                    • <strong>Peneliti/Akademisi:</strong> Untuk keperluan
+                    penelitian dengan persetujuan<br />
+                    Setiap level akses memiliki hak dan batasan yang berbeda
+                    sesuai kebijakan data.
+                  </div>
+                </div>
+              </div>
+
+              <!-- FAQ Item 6 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#faq6"
+                    aria-expanded="false"
+                    aria-controls="faq6"
+                  >
+                    <i class="fas fa-sync-alt me-3"></i>
+                    Bagaimana cara memperbarui data yang sudah diunggah?
+                  </button>
+                </h2>
+                <div
+                  id="faq6"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#faqAccordion"
+                >
+                  <div class="accordion-body">
+                    Untuk memperbarui dataset yang sudah ada:<br />
+                    1. Login ke akun admin OPD Anda<br />
+                    2. Masuk ke menu "Kelola Dataset"<br />
+                    3. Cari dataset yang ingin diperbarui<br />
+                    4. Klik tombol "Edit" atau "Perbarui"<br />
+                    5. Upload file terbaru atau edit metadata<br />
+                    6. Tambahkan keterangan perubahan di kolom "Catatan
+                    Revisi"<br />
+                    7. Simpan perubahan dan tunggu validasi
+                  </div>
+                </div>
+              </div>
+
+              <!-- FAQ Item 7 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#faq7"
+                    aria-expanded="false"
+                    aria-controls="faq7"
+                  >
+                    <i class="fas fa-clock me-3"></i>
+                    Berapa lama proses validasi dataset?
+                  </button>
+                </h2>
+                <div
+                  id="faq7"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#faqAccordion"
+                >
+                  <div class="accordion-body">
+                    Proses validasi dataset biasanya memerlukan waktu:<br />
+                    • <strong>Dataset sederhana:</strong> 1-3 hari kerja<br />
+                    • <strong>Dataset kompleks:</strong> 3-7 hari kerja<br />
+                    • <strong>Dataset sensitif:</strong> 7-14 hari kerja<br />
+                    Waktu validasi tergantung pada kompleksitas data,
+                    kelengkapan metadata, dan antrian validasi. Anda akan
+                    mendapat notifikasi email setelah proses validasi selesai.
+                  </div>
+                </div>
+              </div>
+
+              <!-- FAQ Item 8 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#faq8"
+                    aria-expanded="false"
+                    aria-controls="faq8"
+                  >
+                    <i class="fas fa-exclamation-triangle me-3"></i>
+                    Apa yang harus dilakukan jika login bermasalah?
+                  </button>
+                </h2>
+                <div
+                  id="faq8"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#faqAccordion"
+                >
+                  <div class="accordion-body">
+                    Jika mengalami masalah login:<br />
+                    1. <strong>Periksa kredensial:</strong> Pastikan username
+                    dan password benar<br />
+                    2. <strong>Reset password:</strong> Gunakan fitur "Lupa
+                    Password" jika diperlukan<br />
+                    3. <strong>Clear cache:</strong> Hapus cache browser dan
+                    coba login kembali<br />
+                    4. <strong>Hubungi admin:</strong> Kontak administrator
+                    sistem jika masalah berlanjut<br />
+                    5. <strong>Periksa akses:</strong> Pastikan akun Anda masih
+                    aktif dan memiliki hak akses
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Support Section -->
+        <div class="row mt-5">
+          <div class="col-12">
+            <div class="support-card text-center">
+              <div class="support-icon">
+                <i class="fas fa-headset"></i>
+              </div>
+              <h4 class="fw-bold mb-3">Butuh Bantuan Lebih Lanjut?</h4>
+              <p class="text-muted mb-4">
+                Tim support kami siap membantu Anda 24/7 untuk semua pertanyaan
+                teknis dan non-teknis
+              </p>
+              <div class="d-flex justify-content-center gap-3 flex-wrap">
+                <a href="mailto:mariaw.dwnnd@gmail.com" class="btn-support">
+                  <i class="fas fa-envelope me-2"></i>Email Support
+                </a>
+                <a
+                  href="https://wa.me/6287749375192"
+                  class="btn-support btn-support-wa"
+                >
+                  <i class="fab fa-whatsapp me-2"></i>WhatsApp
+                </a>
+                <a
+                  href="tel:+6287749375192"
+                  class="btn-support btn-support-phone"
+                >
+                  <i class="fas fa-phone me-2"></i>Telepon
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- FAQ Section End -->
+
+    <!-- Footer Start -->
+    <footer class="footer">
+      <div class="container-xl">
+        <div class="row g-4">
+          <!-- About Section -->
+          <div class="col-lg-4 col-md-6">
+            <div class="footer-brand">
+              <img src="logo-sgu.png" alt="Sanggau Logo" />
+              <div>
+                <h4>Diskominfo</h4>
+                <h4>Kab. Sanggau</h4>
+              </div>
+            </div>
+            <p class="footer-description">
+              Dinas Komunikasi dan Informatika Kabupaten Sanggau berkomitmen
+              untuk memberikan layanan terbaik dalam pengelolaan data dan
+              informasi pemerintah daerah yang transparan dan akuntabel.
+            </p>
+            <div class="social-links">
+              <a
+                href="https://facebook.com/diskominfosanggau"
+                target="_blank"
+                class="facebook"
+              >
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a
+                href="https://instagram.com/diskominfosanggau"
+                target="_blank"
+                class="instagram"
+              >
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a
+                href="https://www.youtube.com/@diskominfotvsanggau"
+                target="_blank"
+                class="youtube"
+              >
+                <i class="fab fa-youtube"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Quick Links -->
+          <div class="col-lg-2 col-md-6">
+            <div class="footer-section">
+              <h5>Navigasi</h5>
+              <ul class="footer-links">
+                <li>
+                  <a href="#hero">
+                    <i class="fas fa-home"></i>
+                    Beranda
+                  </a>
+                </li>
+                <li>
+                  <a href="#about">
+                    <i class="fas fa-info-circle"></i>
+                    Tentang Kami
+                  </a>
+                </li>
+                <li>
+                  <a href="#panduan">
+                    <i class="fas fa-book"></i>
+                    Panduan Teknis
+                  </a>
+                </li>
+                <li>
+                  <a href="#faq">
+                    <i class="fas fa-question-circle"></i>
+                    FAQ
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Services -->
+          <div class="col-lg-3 col-md-6">
+            <div class="footer-section">
+              <h5>Layanan</h5>
+              <ul class="footer-links">
+                <li>
+                  <a href="https://data.sanggau.go.id" target="_blank">
+                    <i class="fas fa-database"></i>
+                    Portal Satu Data
+                  </a>
+                </li>
+                <li>
+                  <a href="https://sipd.go.id/ewalidata" target="_blank">
+                    <i class="fas fa-chart-bar"></i>
+                    E-Walidata
+                  </a>
+                </li>
+                <li>
+                  <a href="https://diskominfo.sanggau.go.id/" target="_blank">
+                    <i class="fas fa-globe"></i>
+                    Website Resmi
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <i class="fas fa-headset"></i>
+                    Bantuan Teknis
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Contact Info -->
+          <div class="col-lg-3 col-md-6">
+            <div class="footer-section">
+              <h5>Kontak Kami</h5>
+              <ul class="contact-info">
+                <li>
+                  <i class="fas fa-map-marker-alt"></i>
+                  <div>
+                    <strong>Alamat:</strong><br />
+                    Jl. Pangeran Diponegoro No. 2<br />
+                    Sanggau, Kalimantan Barat 78611
+                  </div>
+                </li>
+                <li>
+                  <i class="fas fa-phone"></i>
+                  <div>
+                    <strong>Telepon:</strong><br />
+                    +62 564 21234
+                  </div>
+                </li>
+                <li>
+                  <i class="fas fa-envelope"></i>
+                  <div>
+                    <strong>Email:</strong><br />
+                    diskominfo@mail.sanggau.go.id
+                  </div>
+                </li>
+                <li>
+                  <i class="fas fa-clock"></i>
+                  <div>
+                    <strong>Jam Kerja:</strong><br />
+                    Senin - Jumat: 08:00 - 16:00 WIB
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+          <p>
+            © 2025 Dinas Komunikasi dan Informatika Kabupaten Sanggau. Dibuat
+            dengan <span class="heart">❤️</span> untuk melayani masyarakat.
+          </p>
+        </div>
+      </div>
+    </footer>
+    <!-- Footer End -->
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js"
+      integrity="sha384-7qAoOXltbVP82dhxHAUje59V5r2YsVfBafyUDxEdApLPmcdhBPg1ERo0BZlK"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.net.min.js"></script>
+    <script>
+      VANTA.NET({
+        el: "#hero",
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.0,
+        minWidth: 200.0,
+        scale: 1.0,
+        scaleMobile: 1.0,
+        color: 0x828282,
+        backgroundColor: 0xffffff,
+        spacing: 20.0,
+      });
+
+      // Navbar scroll effect
+      window.addEventListener("scroll", function () {
+        const navbar = document.querySelector(".navbar");
+        if (window.scrollY > 50) {
+          navbar.style.background = "rgba(255, 255, 255, 0.98)";
+          navbar.style.boxShadow = "0 2px 25px rgba(0, 0, 0, 0.15)";
+        } else {
+          navbar.style.background = "rgba(255, 255, 255, 0.95)";
+          navbar.style.boxShadow = "0 2px 20px rgba(0, 0, 0, 0.1)";
+        }
+      });
+
+      // Smooth scroll with offset for fixed navbar
+      document.querySelectorAll(".nav-link").forEach((link) => {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          const targetId = this.getAttribute("href");
+          const targetSection = document.querySelector(targetId);
+
+          if (targetSection) {
+            const navbarHeight = document.querySelector(".navbar").offsetHeight;
+            const targetPosition = targetSection.offsetTop - navbarHeight;
+
+            window.scrollTo({
+              top: targetPosition,
+              behavior: "smooth",
+            });
+          }
+
+          // Close mobile menu if open
+          const offcanvas = document.querySelector("#offcanvasNavbar");
+          if (offcanvas && offcanvas.classList.contains("show")) {
+            const bsOffcanvas = bootstrap.Offcanvas.getInstance(offcanvas);
+            if (bsOffcanvas) {
+              bsOffcanvas.hide();
+            }
+          }
+        });
+      });
+
+      // Active navigation link
+      const sections = document.querySelectorAll("section[id]");
+      const navLinks = document.querySelectorAll(".nav-link");
+
+      window.addEventListener("scroll", () => {
+        let current = "";
+        const navbarHeight = document.querySelector(".navbar").offsetHeight;
+
+        sections.forEach((section) => {
+          const sectionTop = section.offsetTop - navbarHeight - 50;
+          const sectionBottom = sectionTop + section.clientHeight;
+
+          if (
+            window.pageYOffset >= sectionTop &&
+            window.pageYOffset < sectionBottom
+          ) {
+            current = section.getAttribute("id");
+          }
+        });
+
+        navLinks.forEach((link) => {
+          link.classList.remove("active");
+          if (link.getAttribute("href") === `#${current}`) {
+            link.classList.add("active");
+          }
+        });
+      });
+    </script>
   </body>
 </html>
