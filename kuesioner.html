@@ -429,6 +429,30 @@
         background: var(--danger);
       }
 
+      /* Progress Bar for Understanding Percentage */
+      .understanding-progress-container {
+        margin-top: 20px;
+      }
+
+      .progress {
+        height: 25px;
+        border-radius: 15px;
+        background-color: #e9ecef;
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+      }
+
+      .progress-bar {
+        border-radius: 15px;
+        background: var(--green-gradient);
+        color: white;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.9rem;
+        transition: width 0.6s ease;
+      }
+
       /* Pagination Styles */
       .pagination-container {
         display: flex;
@@ -566,9 +590,7 @@
                 <i class="fas fa-shield-alt"></i>
               </div>
               <div class="stat-number" id="highScore"></div>
-              <div class="stat-label">
-                Pemahaman Tinggi<br /><small>(11-15 poin)</small>
-              </div>
+              <div class="stat-label">Pemahaman Tinggi<br /></div>
             </div>
           </div>
 
@@ -578,9 +600,7 @@
                 <i class="fas fa-exclamation-triangle"></i>
               </div>
               <div class="stat-number" id="mediumScore"></div>
-              <div class="stat-label">
-                Pemahaman Sedang<br /><small>(6-10 poin)</small>
-              </div>
+              <div class="stat-label">Pemahaman Sedang<br /></div>
             </div>
           </div>
 
@@ -590,8 +610,76 @@
                 <i class="fas fa-times-circle"></i>
               </div>
               <div class="stat-number" id="lowScore"></div>
-              <div class="stat-label">
-                Pemahaman Rendah<br /><small>(0-5 poin)</small>
+              <div class="stat-label">Pemahaman Rendah<br /></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="info-section">
+      <div class="container-xl">
+        <div class="row">
+          <div class="col-lg-8">
+            <div class="info-card">
+              <h5>
+                <i class="fas fa-info-circle"></i>
+                Interpretasi Skor Pemahaman
+              </h5>
+              <div class="score-legend">
+                <div class="legend-item">
+                  <div class="legend-color legend-high"></div>
+                  <div>
+                    <strong>Tinggi (11-15 poin)</strong><br />
+                    <small
+                      >Pemahaman baik tentang keamanan password, sudah
+                      menerapkan praktik yang aman</small
+                    >
+                  </div>
+                </div>
+                <div class="legend-item">
+                  <div class="legend-color legend-medium"></div>
+                  <div>
+                    <strong>Sedang (6-10 poin)</strong><br />
+                    <small
+                      >Pemahaman cukup, masih perlu perbaikan dan pembiasaan
+                      keamanan password</small
+                    >
+                  </div>
+                </div>
+                <div class="legend-item">
+                  <div class="legend-color legend-low"></div>
+                  <div>
+                    <strong>Rendah (0-5 poin)</strong><br />
+                    <small
+                      >Pemahaman kurang, berisiko tinggi, sangat membutuhkan
+                      pelatihan keamanan</small
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="info-card">
+              <h5>
+                <i class="fas-fa-chart-line"></i>
+                Persentase Pemahaman Keamanan Password Pegawai
+              </h5>
+              <div class="understanding-progress-container">
+                <div class="progress">
+                  <div
+                    id="understanding-progress-bar"
+                    class="progress-bar"
+                    role="progressbar"
+                    style="width: 0%"
+                    aria-valuenow="0"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  >
+                    0%
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -711,66 +799,7 @@
         <div id="pagination-wrapper" class="pagination-container"></div>
       </div>
     </section>
-    <section class="info-section">
-      <div class="container-xl">
-        <div class="row">
-          <div class="col-lg-8">
-            <div class="info-card">
-              <h5>
-                <i class="fas fa-info-circle"></i>
-                Interpretasi Skor Pemahaman
-              </h5>
-              <div class="score-legend">
-                <div class="legend-item">
-                  <div class="legend-color legend-high"></div>
-                  <div>
-                    <strong>Tinggi (11-15 poin)</strong><br />
-                    <small
-                      >Pemahaman baik tentang keamanan password, sudah
-                      menerapkan praktik yang aman</small
-                    >
-                  </div>
-                </div>
-                <div class="legend-item">
-                  <div class="legend-color legend-medium"></div>
-                  <div>
-                    <strong>Sedang (6-10 poin)</strong><br />
-                    <small
-                      >Pemahaman cukup, masih perlu perbaikan dan pembiasaan
-                      keamanan password</small
-                    >
-                  </div>
-                </div>
-                <div class="legend-item">
-                  <div class="legend-color legend-low"></div>
-                  <div>
-                    <strong>Rendah (0-5 poin)</strong><br />
-                    <small
-                      >Pemahaman kurang, berisiko tinggi, sangat membutuhkan
-                      pelatihan keamanan</small
-                    >
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
 
-          <div class="col-lg-4">
-            <div class="info-card">
-              <h5>
-                <i class="fas fa-calendar"></i>
-                Periode Survei
-              </h5>
-              <p class="mb-2"><strong>25 - 29 Agustus 2025</strong></p>
-              <p class="text-muted mb-0">
-                Total 37 responden dari 4 bidang di Dinas Komunikasi dan
-                Informatika Kabupaten Sanggau
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
@@ -781,18 +810,18 @@
             timestamp: "2025-08-25",
             nama: "Joni Irwanto",
             bidang: "Sekretariat",
-            score: 8,
+            score: 13,
             password_importance: {
               answer: "Penting",
               score: 2,
             },
             password_change_frequency: {
-              answer: "Setahun sekali",
-              score: 1,
+              answer: "Rutin (≤ 3 bulan sekali)",
+              score: 3,
             },
             password_reuse: {
-              answer: "Ya, sering",
-              score: 0,
+              answer: "Tidak pernah",
+              score: 3,
             },
             strong_password_example: {
               answer: "U&CC9-\\Lc92@",
@@ -859,18 +888,18 @@
             timestamp: "2025-08-26",
             nama: "Agus Riyanto",
             bidang: "Pengelola Informasi dan Komunikasi Publik (IKP)",
-            score: 7,
+            score: 11,
             password_importance: {
-              answer: "Kurang Penting",
-              score: 1,
+              answer: "Sangat Penting",
+              score: 3,
             },
             password_change_frequency: {
               answer: "Setahun sekali",
               score: 1,
             },
             password_reuse: {
-              answer: "Ya, sering",
-              score: 0,
+              answer: "Tidak Pernah",
+              score: 3,
             },
             strong_password_example: {
               answer: "U&CC9-\\Lc92@",
@@ -963,18 +992,18 @@
             timestamp: "2025-08-28",
             nama: "Tri Rivanie",
             bidang: "Sekretariat",
-            score: 8,
+            score: 11,
             password_importance: {
-              answer: "Penting",
-              score: 2,
+              answer: "Sangat Penting",
+              score: 3,
             },
             password_change_frequency: {
-              answer: "Setahun sekali",
-              score: 1,
+              answer: "6 bulan sekali",
+              score: 2,
             },
             password_reuse: {
-              answer: "Ya, sering",
-              score: 0,
+              answer: "Kadang-kadang",
+              score: 1,
             },
             strong_password_example: {
               answer: "U&CC9-\\Lc92@",
@@ -989,18 +1018,18 @@
             timestamp: "2025-08-29",
             nama: "Priamdono",
             bidang: "Sekretariat",
-            score: 8,
+            score: 13,
             password_importance: {
               answer: "Penting",
               score: 2,
             },
             password_change_frequency: {
-              answer: "Setahun sekali",
-              score: 1,
+              answer: "Rutin (≤ 3 bulan sekali)",
+              score: 3,
             },
             password_reuse: {
-              answer: "Ya, sering",
-              score: 0,
+              answer: "Tidak pernah",
+              score: 3,
             },
             strong_password_example: {
               answer: "U&CC9-\\Lc92@",
@@ -1145,18 +1174,18 @@
             timestamp: "2025-08-27",
             nama: "Mulyadi",
             bidang: "Sekretariat",
-            score: 8,
+            score: 13,
             password_importance: {
               answer: "Penting",
               score: 2,
             },
             password_change_frequency: {
-              answer: "Setahun sekali",
-              score: 1,
+              answer: "Rutin (≤ 3 bulan sekali)",
+              score: 3,
             },
             password_reuse: {
-              answer: "Ya, sering",
-              score: 0,
+              answer: "Tidak pernah",
+              score: 3,
             },
             strong_password_example: {
               answer: "U&CC9-\\Lc92@",
@@ -1223,18 +1252,18 @@
             timestamp: "2025-08-28",
             nama: "Rosidi",
             bidang: "Sekretariat",
-            score: 8,
+            score: 11,
             password_importance: {
-              answer: "Penting",
-              score: 2,
+              answer: "Sangat Penting",
+              score: 3,
             },
             password_change_frequency: {
-              answer: "Setahun sekali",
-              score: 1,
+              answer: "6 bulan sekali",
+              score: 2,
             },
             password_reuse: {
-              answer: "Ya, sering",
-              score: 0,
+              answer: "Kadang-kadang",
+              score: 1,
             },
             strong_password_example: {
               answer: "U&CC9-\\Lc92@",
@@ -1249,18 +1278,18 @@
             timestamp: "2025-08-29",
             nama: "Iwan",
             bidang: "Sekretariat",
-            score: 8,
+            score: 11,
             password_importance: {
-              answer: "Penting",
-              score: 2,
+              answer: "Sangat Penting",
+              score: 3,
             },
             password_change_frequency: {
-              answer: "Setahun sekali",
-              score: 1,
+              answer: "6 bulan sekali",
+              score: 2,
             },
             password_reuse: {
-              answer: "Ya, sering",
-              score: 0,
+              answer: "Kadang-kadang",
+              score: 1,
             },
             strong_password_example: {
               answer: "U&CC9-\\Lc92@",
@@ -1535,18 +1564,18 @@
             timestamp: "2025-08-29",
             nama: "Harris Tresna Yudha",
             bidang: "Pengelola Informasi dan Komunikasi Publik (IKP)",
-            score: 8,
+            score: 14,
             password_importance: {
-              answer: "Penting",
-              score: 2,
+              answer: "Sangat Penting",
+              score: 3,
             },
             password_change_frequency: {
-              answer: "Setahun sekali",
-              score: 1,
+              answer: "Rutin (≤ 3 bulan sekali)",
+              score: 3,
             },
             password_reuse: {
-              answer: "Ya, sering",
-              score: 0,
+              answer: "Tidak pernah",
+              score: 3,
             },
             strong_password_example: {
               answer: "U&CC9-\\Lc92@",
@@ -1561,18 +1590,18 @@
             timestamp: "2025-08-25",
             nama: "Arian Dwi Putra",
             bidang: "Sekretariat",
-            score: 8,
+            score: 14,
             password_importance: {
-              answer: "Penting",
-              score: 2,
+              answer: "Sangat Penting",
+              score: 3,
             },
             password_change_frequency: {
-              answer: "Setahun sekali",
-              score: 1,
+              answer: "Rutin (≤ 3 bulan sekali)",
+              score: 3,
             },
             password_reuse: {
-              answer: "Ya, sering",
-              score: 0,
+              answer: "Tidak pernah",
+              score: 3,
             },
             strong_password_example: {
               answer: "U&CC9-\\Lc92@",
@@ -1691,18 +1720,18 @@
             timestamp: "2025-08-27",
             nama: "M Sukri Zarkasyi",
             bidang: "Pengelola Informasi dan Komunikasi Publik (IKP)",
-            score: 8,
+            score: 11,
             password_importance: {
-              answer: "Penting",
-              score: 2,
+              answer: "Sangat Penting",
+              score: 3,
             },
             password_change_frequency: {
-              answer: "Setahun sekali",
-              score: 1,
+              answer: "6 bulan sekali",
+              score: 2,
             },
             password_reuse: {
-              answer: "Ya, sering",
-              score: 0,
+              answer: "Kadang-kadang",
+              score: 1,
             },
             strong_password_example: {
               answer: "U&CC9-\\Lc92@",
@@ -1858,6 +1887,33 @@
         return "low";
       }
 
+      // FUNGSI BARU UNTUK MENGHITUNG PERSENTASE PEMAHAMAN
+      function calculateUnderstandingPercentage(data) {
+        let totalScore = 0;
+        const totalRespondents = data.length;
+
+        data.forEach((item) => {
+          const level = getScoreLevel(item.score);
+          if (level === "high") {
+            totalScore += 1;
+          } else if (level === "medium") {
+            totalScore += 0.5;
+          }
+          // Low level adds 0, so no need for an else statement
+        });
+
+        const percentage = (totalScore / totalRespondents) * 100;
+        const roundedPercentage = percentage.toFixed(1);
+
+        // Update the progress bar
+        const progressBar = document.getElementById(
+          "understanding-progress-bar"
+        );
+        progressBar.style.width = `${roundedPercentage}%`;
+        progressBar.textContent = `${roundedPercentage}%`;
+        progressBar.setAttribute("aria-valuenow", roundedPercentage);
+      }
+
       // FUNGSI UNTUK MENAMPILKAN BADGE SKOR
       function getScoreBadge(score) {
         const level = getScoreLevel(score);
@@ -2004,6 +2060,7 @@
         currentFilteredData = filteredData;
         currentPage = 1; // Reset halaman ke 1 setiap kali filter diterapkan
         renderTable(currentFilteredData, currentPage);
+        calculateUnderstandingPercentage(currentFilteredData);
       }
 
       // FUNGSI UNTUK MERESET FILTER
